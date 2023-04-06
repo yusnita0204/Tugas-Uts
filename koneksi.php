@@ -1,26 +1,23 @@
 <?php
-include("koneksi.php");
-$queryHarga = "SELECT * FROM `harga_beras`"
-    ?>
+class koneksi {
+    public $host = "localhost";
+    public $username ="root";
+    public $password ="";
+    public $database = "db_zakat";
+    public $koneksi = "";
+    function __construct(){
+        $this->koneksi = mysqli_connect($this->host,$this->username,$this->password,$this->database
+    );
+    if (mysqli_connect_errno()){
+    echo "koneksi gagal";
+    
+}
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WOI ZAKAT</title>
-</head>
-
-<body>
-    <form method="post">
-        <label for="nama">Nama</label>
-        <input name="nama" type="text"></input><br>
-
-        <label for="tanggungan">Tanggungan</label>
-        <input name="tanggungan" type="number"></input><br>
-        <select name="hb">
-            <?php
-            foreach ($db->tampil_Data_Banyak($queryHarga) as $key => $value) {
-                ?>
+    }
+    function tampil_Data_Banyak($query){
+        $data = mysqli_query($this->koneksi,$query);
+        while ($row = mysqli_fetch_assoc($data))
+            $hasil[] =$row;
+        return $hasil;
+    }
+    
