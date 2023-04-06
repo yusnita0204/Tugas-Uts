@@ -13,6 +13,7 @@ class koneksi {
     
 }
 
+
     }
     function tampil_Data_Banyak($query){
         $data = mysqli_query($this->koneksi,$query);
@@ -21,3 +22,5 @@ class koneksi {
         return $hasil;
     }
     
+
+}
